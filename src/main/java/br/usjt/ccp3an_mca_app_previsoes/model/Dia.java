@@ -6,17 +6,23 @@ import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 
+import br.usjt.ccp3an_mca_app_previsoes.model.bean.DiaSemana;
 
+//Classe que representa a previsão
 @Entity
 public class Dia implements Serializable{
 	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue
 	private Long id;
-	private String nomedia;
 	private Long tempmin;
 	private Long tempmax;
+	@OneToOne (optional = false)
+	@JoinColumn (name = "DiaSemana")
+	private DiaSemana dia;
 	private String descricao;
 	private Date dataHora;
 	private String humidade;
@@ -53,12 +59,7 @@ public class Dia implements Serializable{
 	public void setId(Long id) {
 		this.id = id;
 	}
-	public String getNomedia() {
-		return nomedia;
-	}
-	public void setNomedia(String nomeDIa) {
-		this.nomedia = nomeDIa;
-	}
+
 	public Long getTempmin() {
 		return tempmin;
 	}
@@ -76,6 +77,12 @@ public class Dia implements Serializable{
 	}
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
+	}
+	public DiaSemana getDia() {
+		return dia;
+	}
+	public void setDia(DiaSemana dia) {
+		this.dia = dia;
 	}
 	public static long getSerialversionuid() {
 		return serialVersionUID;
