@@ -24,14 +24,13 @@ public class LoginController {
 	@PostMapping ("/fazerLogin")
 	public String fazerLogin (HttpServletRequest request, Usuario usuario) {
 		if (loginService.logar(usuario)) {
-		 request.getSession().setAttribute("usuarioLogado",
-		 usuario);
+		 request.getSession().setAttribute("usuarioLogado", usuario);
 		return "redirect:dias";
 		}
 		else {
 		return "login";
 		}
-		}
+	}
 
 
 }
